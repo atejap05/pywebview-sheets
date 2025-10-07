@@ -38,13 +38,13 @@ Este tutorial detalha o funcionamento da biblioteca **PyWebView** e como integr�
 
 ### 🔄 Comparação com Outras Tecnologias
 
-| Característica | PyWebView | Electron | PyQt/Tkinter |
-|----------------|-----------|----------|--------------|
-| Tamanho do executável | Pequeno (~5-10 MB) | Grande (~100+ MB) | Médio (~20-50 MB) |
-| Tecnologias web | ✅ HTML/CSS/JS | ✅ HTML/CSS/JS | ❌ Widgets nativos |
-| Integração Python | ✅ Direta | ⚠️ Via IPC | ✅ Direta |
-| Curva de aprendizado | Baixa | Média | Alta |
-| Performance | Boa | Boa | Excelente |
+| Característica        | PyWebView          | Electron          | PyQt/Tkinter       |
+| --------------------- | ------------------ | ----------------- | ------------------ |
+| Tamanho do executável | Pequeno (~5-10 MB) | Grande (~100+ MB) | Médio (~20-50 MB)  |
+| Tecnologias web       | ✅ HTML/CSS/JS     | ✅ HTML/CSS/JS    | ❌ Widgets nativos |
+| Integração Python     | ✅ Direta          | ⚠️ Via IPC        | ✅ Direta          |
+| Curva de aprendizado  | Baixa              | Média             | Alta               |
+| Performance           | Boa                | Boa               | Excelente          |
 
 ---
 
@@ -115,6 +115,7 @@ pip install pywebview[cef]
 ### 🔧 Dependências por Sistema Operacional
 
 #### macOS
+
 ```bash
 # Não precisa de dependências adicionais
 # Usa WebKit nativo via PyObjC
@@ -122,6 +123,7 @@ pip install pywebview
 ```
 
 #### Linux (Ubuntu/Debian)
+
 ```bash
 # GTK
 sudo apt install python3-gi python3-gi-cairo gir1.2-gtk-3.0 gir1.2-webkit2-4.1
@@ -131,6 +133,7 @@ sudo apt install python3-pyqt5 python3-pyqt5.qtwebengine
 ```
 
 #### Windows
+
 ```bash
 # Usa Edge WebView2 (Windows 10+)
 # Ou MSHTML (Windows 7/8)
@@ -158,30 +161,30 @@ webview.create_window(
     title='Minha App',           # Título da janela
     url='http://localhost:5000', # URL a carregar
     html='<h1>HTML direto</h1>', # Ou HTML direto
-    
+
     # Dimensões
     width=800,                   # Largura
     height=600,                  # Altura
     x=100,                       # Posição X
     y=100,                       # Posição Y
     min_size=(400, 300),         # Tamanho mínimo
-    
+
     # Comportamento
     resizable=True,              # Redimensionável
     fullscreen=False,            # Tela cheia
     minimized=False,             # Minimizada
     on_top=False,                # Sempre no topo
-    
+
     # Aparência
     frameless=False,             # Sem bordas
     easy_drag=True,              # Arrastar fácil
     background_color='#FFFFFF',  # Cor de fundo
-    
+
     # Funcionalidades
     text_select=True,            # Seleção de texto
     zoomable=False,              # Zoom
     confirm_close=False,         # Confirmar fechamento
-    
+
     # API
     js_api=None,                 # Objeto Python exposto
 )
@@ -218,7 +221,7 @@ def main():
         'Minha Primeira App',
         'https://www.google.com'
     )
-    
+
     # Inicia GUI
     webview.start()
 
@@ -354,11 +357,11 @@ class API:
     def get_data(self):
         """Função Python chamável do JavaScript"""
         return {'message': 'Hello from Python!', 'value': 42}
-    
+
     def calculate(self, a, b):
         """Função com parâmetros"""
         return a + b
-    
+
     def process_async(self, data):
         """Operação assíncrona"""
         import time
@@ -376,23 +379,23 @@ webview.start()
 ```javascript
 // Chamando funções Python do JavaScript
 async function callPython() {
-    // Função simples
-    const data = await window.pywebview.api.get_data();
-    console.log(data);  // {message: "Hello from Python!", value: 42}
-    
-    // Função com parâmetros
-    const result = await window.pywebview.api.calculate(10, 20);
-    console.log(result);  // 30
-    
-    // Função assíncrona
-    const processed = await window.pywebview.api.process_async('test');
-    console.log(processed);  // "Processed: test"
+  // Função simples
+  const data = await window.pywebview.api.get_data();
+  console.log(data); // {message: "Hello from Python!", value: 42}
+
+  // Função com parâmetros
+  const result = await window.pywebview.api.calculate(10, 20);
+  console.log(result); // 30
+
+  // Função assíncrona
+  const processed = await window.pywebview.api.process_async("test");
+  console.log(processed); // "Processed: test"
 }
 
 // Aguarda API estar pronta
-window.addEventListener('pywebviewready', () => {
-    console.log('PyWebView API ready!');
-    callPython();
+window.addEventListener("pywebviewready", () => {
+  console.log("PyWebView API ready!");
+  callPython();
 });
 ```
 
@@ -404,12 +407,12 @@ import webview
 class API:
     def __init__(self, window):
         self.window = window
-    
+
     def notify_user(self, message):
         """Executa JavaScript da janela"""
         js_code = f"alert('{message}')"
         self.window.evaluate_js(js_code)
-    
+
     def update_dom(self, element_id, content):
         """Atualiza elemento do DOM"""
         js_code = f"""
@@ -447,12 +450,12 @@ SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 def authenticate():
     """Autentica com Google Sheets"""
     creds = None
-    
+
     # Carrega token existente
     if os.path.exists('token.json'):
         with open('token.json', 'rb') as token:
             creds = pickle.load(token)
-    
+
     # Se não há credenciais válidas
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
@@ -461,11 +464,11 @@ def authenticate():
             flow = InstalledAppFlow.from_client_secrets_file(
                 'credentials.json', SCOPES)
             creds = flow.run_local_server(port=0)
-        
+
         # Salva token
         with open('token.json', 'wb') as token:
             pickle.dump(creds, token)
-    
+
     return build('sheets', 'v4', credentials=creds)
 ```
 
@@ -480,7 +483,7 @@ def read_sheet(service, spreadsheet_id, range_name):
         spreadsheetId=spreadsheet_id,
         range=range_name
     ).execute()
-    
+
     values = result.get('values', [])
     return values
 
@@ -497,14 +500,14 @@ for row in data:
 def write_sheet(service, spreadsheet_id, range_name, values):
     """Escreve dados na planilha"""
     body = {'values': values}
-    
+
     result = service.spreadsheets().values().update(
         spreadsheetId=spreadsheet_id,
         range=range_name,
         valueInputOption='RAW',
         body=body
     ).execute()
-    
+
     return result
 
 # Exemplo
@@ -523,7 +526,7 @@ write_sheet(service, 'SPREADSHEET_ID', 'Sheet1!A1:C3', data)
 def append_sheet(service, spreadsheet_id, range_name, values):
     """Adiciona dados ao final da planilha"""
     body = {'values': values}
-    
+
     result = service.spreadsheets().values().append(
         spreadsheetId=spreadsheet_id,
         range=range_name,
@@ -531,7 +534,7 @@ def append_sheet(service, spreadsheet_id, range_name, values):
         insertDataOption='INSERT_ROWS',
         body=body
     ).execute()
-    
+
     return result
 
 # Exemplo
@@ -557,12 +560,12 @@ def delete_row(service, spreadsheet_id, sheet_id, row_index):
             }
         }]
     }
-    
+
     result = service.spreadsheets().batchUpdate(
         spreadsheetId=spreadsheet_id,
         body=request_body
     ).execute()
-    
+
     return result
 ```
 
@@ -581,7 +584,7 @@ SPREADSHEET_ID = 'your_spreadsheet_id'
 def get_users():
     """Lista usuários"""
     data = read_sheet(service, SPREADSHEET_ID, 'Users!A2:C')
-    users = [{'name': row[0], 'email': row[1], 'age': row[2]} 
+    users = [{'name': row[0], 'email': row[1], 'age': row[2]}
              for row in data]
     return jsonify(users)
 
@@ -656,16 +659,16 @@ def initialize():
 
 def main():
     global window
-    
+
     # Cria janela
     window = webview.create_window('App', 'http://localhost:5000')
-    
+
     # Configura eventos
     window.events.loaded += lambda: threading.Thread(
-        target=initialize, 
+        target=initialize,
         daemon=True
     ).start()
-    
+
     # Inicia
     webview.start(debug=True)
 
@@ -703,10 +706,10 @@ def safe_api_call(user_input):
     # Validação
     if not isinstance(user_input, str):
         raise ValueError("Input inválido")
-    
+
     # Sanitização
     clean_input = user_input.strip()
-    
+
     # Uso seguro
     return process(clean_input)
 
@@ -762,6 +765,7 @@ webview.start(debug=DEBUG)
 ### ❌ Problemas Comuns
 
 #### Porta já em uso
+
 ```python
 import socket
 
@@ -775,6 +779,7 @@ app.run(port=port)
 ```
 
 #### Google Sheets Error 403
+
 ```
 Solução:
 1. Adicione usuários de teste no Google Cloud Console
@@ -783,6 +788,7 @@ Solução:
 ```
 
 #### PyWebView não abre janela (Linux)
+
 ```bash
 # Instale dependências GTK
 sudo apt install python3-gi gir1.2-webkit2-4.1
@@ -792,6 +798,7 @@ pip install pywebview[qt]
 ```
 
 #### SSL Certificate Error
+
 ```python
 # Temporário para desenvolvimento
 import ssl
@@ -813,6 +820,7 @@ ssl._create_default_https_context = ssl._create_unverified_context
 ### Exemplos Avançados
 
 Veja mais exemplos em:
+
 - `/docs/PROJETO_COMPLETO.md` - Visão geral do projeto
 - `/docs/INSTRUCOES_USO.md` - Manual completo
 - `/docs/GOOGLE_SHEETS_SETUP.md` - Setup detalhado
