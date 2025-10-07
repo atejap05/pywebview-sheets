@@ -16,12 +16,10 @@
   - Implementar sistema de login/logout
   - Adicionar controle de permissões
   - Integrar com Google OAuth para multi-usuários
-  
 - [ ] **Tratamento de Erros Robusto**
   - Adicionar try-catch em todas as operações Google Sheets
   - Implementar retry automático para falhas de rede
   - Criar sistema de logs para debugging
-  
 - [ ] **Validação de Dados Avançada**
   - Validar CPF com algoritmo correto
   - Adicionar validação de emails duplicados
@@ -34,18 +32,15 @@
   - Implementar drag-and-drop para upload de dados
   - Melhorar feedback visual de ações (loading states)
   - Adicionar animações de transição
-  
 - [ ] **Funcionalidades Extras**
   - Exportar dados para CSV/Excel
   - Importar dados em lote
   - Gerar relatórios em PDF
   - Adicionar gráficos e dashboards avançados
-  
 - [ ] **Sincronização Offline**
   - Implementar cache local com SQLite
   - Sincronizar automaticamente quando online
   - Resolver conflitos de dados
-  
 - [ ] **Busca Avançada**
   - Filtros múltiplos simultâneos
   - Ordenação por diferentes colunas
@@ -56,17 +51,14 @@
 - [ ] **Internacionalização (i18n)**
   - Adicionar suporte para múltiplos idiomas
   - Interface em Inglês, Português, Espanhol
-  
 - [ ] **Temas Personalizáveis**
   - Permitir usuário escolher cores
   - Salvar preferências de tema
-  
 - [ ] **Atalhos de Teclado**
   - Implementar shortcuts para ações comuns
   - Ctrl+N para novo registro
   - Ctrl+S para salvar
   - Ctrl+F para buscar
-  
 - [ ] **Histórico de Alterações**
   - Log de todas as modificações
   - Possibilidade de desfazer ações
@@ -79,6 +71,7 @@
 ### 🔧 Técnicas
 
 #### Performance
+
 ```python
 # TODO: Implementar paginação
 - Carregar dados em páginas de 50 registros
@@ -92,6 +85,7 @@
 ```
 
 #### Segurança
+
 ```python
 # TODO: Criptografia
 - Criptografar credenciais sensíveis
@@ -105,6 +99,7 @@
 ```
 
 #### Arquitetura
+
 ```python
 # TODO: Refatoração
 - Separar lógica de negócio de controllers
@@ -116,6 +111,7 @@
 ### 🎨 Interface
 
 #### UX Melhorias
+
 ```javascript
 // TODO: Feedback ao usuário
 - Toast notifications mais informativas
@@ -130,12 +126,11 @@
 ```
 
 #### Acessibilidade
+
 ```html
 <!-- TODO: A11y -->
-- Adicionar ARIA labels
-- Suporte para leitores de tela
-- Navegação por teclado completa
-- Contraste adequado de cores
+- Adicionar ARIA labels - Suporte para leitores de tela - Navegação por teclado
+completa - Contraste adequado de cores
 ```
 
 ---
@@ -264,7 +259,7 @@ def get_resource_path(relative_path):
         base_path = sys._MEIPASS
     except Exception:
         base_path = os.path.abspath(".")
-    
+
     return os.path.join(base_path, relative_path)
 
 # Usar assim:
@@ -352,6 +347,7 @@ npm install electron electron-builder
 ### 📋 Checklist Pré-Distribuição
 
 - [ ] **Remover dados sensíveis**
+
   ```bash
   # Não incluir:
   - credentials.json (instruir usuário a criar próprio)
@@ -361,11 +357,13 @@ npm install electron electron-builder
   ```
 
 - [ ] **Criar instalador**
+
   - macOS: DMG com .app
   - Windows: .exe com instalador NSIS
   - Linux: AppImage ou .deb
 
 - [ ] **Documentação de usuário**
+
   - [ ] Manual de instalação
   - [ ] Guia de primeiro uso
   - [ ] FAQ
@@ -395,6 +393,7 @@ release/
 ### 🌐 Opções de Distribuição
 
 #### 1. GitHub Releases
+
 ```bash
 # Criar release
 git tag v1.0.0
@@ -407,6 +406,7 @@ git push origin v1.0.0
 ```
 
 #### 2. Website Próprio
+
 ```html
 <!-- Landing page simples -->
 <h1>PyWebView Sheets</h1>
@@ -418,6 +418,7 @@ git push origin v1.0.0
 #### 3. App Stores
 
 **macOS App Store**
+
 ```bash
 # Requer:
 - Apple Developer Account ($99/ano)
@@ -427,6 +428,7 @@ git push origin v1.0.0
 ```
 
 **Microsoft Store**
+
 ```bash
 # Requer:
 - Microsoft Developer Account
@@ -487,14 +489,14 @@ git push origin v1.0.0
 
 ### Ferramentas Recomendadas
 
-| Ferramenta | Uso | Link |
-|------------|-----|------|
-| PyInstaller | Empacotamento | https://www.pyinstaller.org/ |
-| Inno Setup | Instalador Windows | https://jrsoftware.org/isinfo.php |
-| create-dmg | DMG para macOS | https://github.com/sindresorhus/create-dmg |
-| AppImageKit | Linux AppImage | https://appimage.org/ |
-| Sentry | Error tracking | https://sentry.io/ |
-| Sparkle | Auto-update macOS | https://sparkle-project.org/ |
+| Ferramenta  | Uso                | Link                                       |
+| ----------- | ------------------ | ------------------------------------------ |
+| PyInstaller | Empacotamento      | https://www.pyinstaller.org/               |
+| Inno Setup  | Instalador Windows | https://jrsoftware.org/isinfo.php          |
+| create-dmg  | DMG para macOS     | https://github.com/sindresorhus/create-dmg |
+| AppImageKit | Linux AppImage     | https://appimage.org/                      |
+| Sentry      | Error tracking     | https://sentry.io/                         |
+| Sparkle     | Auto-update macOS  | https://sparkle-project.org/               |
 
 ---
 
@@ -506,17 +508,14 @@ git push origin v1.0.0
   - Sugestões automáticas baseadas em histórico
   - Detecção de anomalias nos dados
   - Preenchimento inteligente de campos
-  
 - [ ] **Colaboração em Tempo Real**
   - Ver quem está editando o quê
   - Chat integrado
   - Notificações de mudanças
-  
 - [ ] **Mobile App**
   - Versão para iOS e Android
   - Sincronização com desktop
   - Notificações push
-  
 - [ ] **Plugins/Extensões**
   - Sistema de plugins para estender funcionalidades
   - Marketplace de extensões
@@ -527,6 +526,7 @@ git push origin v1.0.0
 ## 📝 Notas de Versão
 
 ### v1.0.0 (Atual)
+
 - ✅ CRUD completo de Usuários e Produtos
 - ✅ Integração Google Sheets funcionando
 - ✅ Interface React moderna
@@ -534,12 +534,14 @@ git push origin v1.0.0
 - ✅ Documentação completa
 
 ### v1.1.0 (Planejado)
+
 - [ ] Autenticação de usuários
 - [ ] Exportar para PDF
 - [ ] Modo escuro
 - [ ] Busca avançada
 
 ### v2.0.0 (Futuro)
+
 - [ ] Sincronização offline
 - [ ] Múltiplas planilhas
 - [ ] Gráficos avançados
