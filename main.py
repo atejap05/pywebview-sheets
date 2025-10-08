@@ -3,6 +3,7 @@ Aplicação principal PyWebView + React + Google Sheets
 """
 import os
 import sys
+import sys
 import threading
 import time
 import webbrowser
@@ -10,6 +11,14 @@ from flask import Flask
 import webview
 from backend.app import app as flask_app
 from webview_config import create_window, start_webview
+
+def get_resource_path(relative_path):
+    """Obtém caminho correto para recursos empacotados pelo PyInstaller"""
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
 
 class PyWebViewApp:
     """Classe principal da aplicação PyWebView"""
@@ -55,6 +64,8 @@ class PyWebViewApp:
             print("Erro: Flask não iniciou a tempo")
             return
         
+        # Exemplo de uso do get_resource_path para acessar o build do frontend
+        frontend_build_path = get_resource_path('frontend/build')
         # Cria janela PyWebView com configurações otimizadas
         self.window = create_window(
             title='Sistema de Gerenciamento - PyWebView + React + Google Sheets',

@@ -11,7 +11,7 @@ def configure_webview():
         'ALLOW_DOWNLOADS': False,  # Não permite downloads
         'ALLOW_FILE_URLS': True,   # Permite acesso a arquivos locais
         'OPEN_EXTERNAL_LINKS_IN_BROWSER': True,  # Abre links externos no navegador
-        'OPEN_DEVTOOLS_IN_DEBUG': True,  # Abre DevTools em modo debug
+        'OPEN_DEVTOOLS_IN_DEBUG': False,  # Abre DevTools em modo debug
         'REMOTE_DEBUGGING_PORT': 9222,  # Porta para debug remoto
     }
     
